@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="tutkal.app">
+    <serverData>
+      <paths name="tutkal.app">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/1s1pNode" local="$PROJECT_DIR$" web="https://client.tutkal.app/1s1pNode" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
