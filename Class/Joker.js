@@ -3,12 +3,12 @@ const questionsController = require('../Database/Controllers/questionsController
 
 exports.bomb = (req, res) => {
 
-    usersController.useJoker('x', req.body.userID, (jokerResult) => {
+    usersController.useJoker('x', req.body.x, (jokerResult) => {
         if (jokerResult >= 0) {
 
             var bombArray = [];
 
-            questionsController.getCorrect(req.body.questionID, (correctResult) => {
+            questionsController.getCorrect(req.body.x, (correctResult) => {
 
                 if (correctResult > 0) {
                     for (let i = 0; i < 2; i++) {
@@ -25,7 +25,7 @@ exports.bomb = (req, res) => {
                     };
                     res.json(response);
                 } else {
-                    usersController.add('x', 1, req.body.userID, () =>
+                    usersController.add('x', 1, req.body.x, () =>
                         res.json(correctResult)
                     );
                 }
@@ -46,11 +46,11 @@ exports.bomb = (req, res) => {
 };
 
 exports.pass = (req, res) => {
-    usersController.useJoker('x', req.body.userID, (jokerResult) => {
+    usersController.useJoker('x', req.body.x, (jokerResult) => {
         if (jokerResult >= -1) {
             res.json({"x": jokerResult})
         } else {
-            usersController.add('x', 1, req.body.userID, () => {
+            usersController.add('x', 1, req.body.x, () => {
                 res.json(jokerResult)
             });
         }
@@ -58,9 +58,9 @@ exports.pass = (req, res) => {
 };
 
 exports.hit = (req, res) => {
-    usersController.useJoker('x', req.body.userID, (jokerResult) => {
+    usersController.useJoker('x', req.body.x, (jokerResult) => {
         if (jokerResult >= 0) {
-            questionsController.getCorrect(req.body.questionID, (correctResult) => {
+            questionsController.getCorrect(req.body.x, (correctResult) => {
                 if (correctResult > 0) {
                     var response = {
                         "x": correctResult,
@@ -68,7 +68,7 @@ exports.hit = (req, res) => {
                     };
                     res.json(response);
                 } else {
-                    usersController.add('x', 1, req.body.userID, () => {
+                    usersController.add('x', 1, req.body.x, () => {
                         res.json(correctResult);
                     });
                 }
