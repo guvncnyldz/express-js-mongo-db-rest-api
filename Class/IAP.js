@@ -43,9 +43,9 @@ exports.Purchased = (req, res) => {
             break;
     }
 
-    usersController.add('x', items.hit, req.body.userID);
-    usersController.add('x', items.bomb, req.body.userID);
-    usersController.add('x', items.pass, req.body.userID);
+    usersController.add('x', items.hit, req.body.x);
+    usersController.add('x', items.bomb, req.body.x);
+    usersController.add('x', items.pass, req.body.x);
 
     res.send(items);
 };
